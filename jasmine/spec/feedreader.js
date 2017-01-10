@@ -107,23 +107,19 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        //SS: get first non current feed to call
 
         beforeEach(function(done) {
-            loadFeed(0, function() { done(); });
+            var title = $('.header-title').text();
+            oldFeed = $('.feed').html();
+            for (var i = 0; i < allFeeds.length; i++) {
+                if (allFeeds[i].name != title) {
+                    loadFeed(i, function() { done(); });
+                    break;
+                } else if (i == allFeeds.length - 1) { expect(true).toBe(false); } // test dose not pass something wrong if loop completes and no existing feed loaded
+            }
         });
 
-        it('has atleast two entries', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).toBeGreaterThan(1);
-        });
-        //SS: First done call back loads feed for 0th URL 
-        it('loads old feed', function(done) {
-            loadFeed(1, function() { done(); });
-            oldFeed = $('.feed').html();
-            expect(true).toBe(true); //SS: no special expectaion
-            done();
-        });
-        //SS: second done call expects 1st URL to be loaded from array
         it('loads new feed', function(done) {
             expect($('.feed').html()).not.toEqual(oldFeed);
             done();
