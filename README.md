@@ -7,3 +7,7 @@ Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/pr
  - Download the repo 
  - Browse the application's HTML (**./index.html**) to run the tests. 
  - The Jasmine spec file in **./jasmine/spec/feedreader.js** has all the tests
+ 
+> 
+> **Note:**
+>- additional library Jasmin-jquery library used
