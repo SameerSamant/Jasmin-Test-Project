@@ -108,18 +108,18 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
-        beforeEach(function(done) {                        
+        beforeEach(function(done) {
             loadFeed(0, function() { done(); });
         });
 
-         it('has atleast two entries', function() {
+        it('has atleast two entries', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).toBeGreaterThan(1);
         });
         //SS: First done call back loads feed for 0th URL 
         it('loads old feed', function(done) {
             loadFeed(1, function() { done(); });
-            oldFeed = $('.feed').html();  
+            oldFeed = $('.feed').html();
             expect(true).toBe(true); //SS: no special expectaion
             done();
         });
